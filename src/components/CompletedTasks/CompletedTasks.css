@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to bottom, #60E8F5, #D1CB84, #E9FC5F);
+}
+
+.completed-page {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logout-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #86F6F8;
+  font-family: 'Original Surfer', sans-serif;
+  color: #01578F;
+  border: none;
+  border-radius: 15px;
+  padding: 6px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* .user-profile {
+  display: flex;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.username-field, .age-field {
+  background-color: white;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 14px;
+  color: #b0b0b0;
+  text-align: center;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+}
+
+.username-field {
+  width: 180px;
+  margin-left: 20px;
+}
+
+.age-field {
+  width: 120px;
+  margin-left: 50px;
+} */
+
+.date-title {
+  background-color: #8AF3FF;
+  color: #01578F;
+  font-family: 'Original Surfer', sans-serif;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+.task-card {
+  background-color: #00FFAD;
+  color: #003366;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Original Surfer', sans-serif;
+  padding: 14px 30px;
+  width: 100%;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  box-sizing: border-box; /* Add this to include padding in width calculation */
+  word-wrap: break-word; /* Ensure long words break */
+  overflow-wrap: break-word; /* Modern version of word-wrap */
+  max-width: 100%; /* Ensure it doesn't exceed parent width */
+}
+
+/* Style for task description */
+.task-description {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 8px;
+  color: #004d80;
+  word-break: break-word; /* Force break for very long words */
+  white-space: normal; /* Ensure text wraps */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis if text is truncated */
+  max-width: 100%; /* Ensure it doesn't exceed parent width */
+}
+
+.task-status-indicator {
+  color: #006644;
+  margin-right: 5px;
+}
+
+.subsection-title {
+  color: #01578F;
+  font-family: 'Original Surfer', sans-serif;
+  margin: 15px 0 5px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.loading, .no-tasks {
+  text-align: center;
+  margin: 20px 0;
+  color: #01578F;
+  font-family: 'Original Surfer', sans-serif;
+}
+
+.back-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-arrow-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-arrow-img:hover {
+  transform: scale(1.05);
+}
+
+.footer-title {
+  font-size: 14px;
+  color: #645270;
+  font-family: 'Inika', serif;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: #ff5252;
+  text-align: center;
+  margin: 10px 0;
+  font-family: 'Original Surfer', sans-serif;
+}

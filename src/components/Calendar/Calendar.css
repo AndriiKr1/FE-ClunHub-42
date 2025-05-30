@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&family=Inika&display=swap');
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Original Surfer', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.calendar-page {
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #60E8F5,#D1CB84, #E9FC5F);
+  border-radius: 0px;
+  padding: 20px;
+  padding-bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.top-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* .user-profile {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 40px;
+  gap: 10px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 35px;
+}
+
+.username-field {
+  background-color: white;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b0b0b0;
+  width: 280px;
+  height: 40px;
+  text-align: center;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+  margin-left: 40px;
+}
+
+.age-field {
+  background-color: white;
+  border-radius: 30px;
+  padding: 6px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b0b0b0;
+  width: 220px;
+  height: 38px;
+  text-align: center;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+  margin-left: 50px;
+} */
+
+.logout-button {
+  background-color: #86F6F8;
+  font-family: 'Original Surfer', sans-serif;
+  color: #01578F;
+  border: none;
+  border-radius: 15px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  transform: translate(0, 0);
+  margin-right: 25px;
+  margin-top: 40px;
+}
+
+.logout-button:hover {
+  background-color: #74c0e0;
+}
+
+.completed-tasks-title {
+  background-color: #8AF3FF;
+  font-family: 'Original Surfer', sans-serif;
+  color: #01578F;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 10px 0;
+  width: 100%;
+  max-width: 390px;
+}
+
+.calendar-box {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.calendar-header button {
+  background-color: #b5e9ff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.2s;
+}
+
+.calendar-header button:hover {
+  background-color: #9ad9f3;
+}
+
+.calendar-header span {
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.calendar-header span:hover {
+  background-color: #eef9ff;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #333;
+}
+
+.weekday {
+  padding: 4px 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  padding: 5px;
+}
+
+.calendar-cell {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  height: 60px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-bubble-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.task-bubble {
+  background-color: #b5e9ff;
+  border-radius: 8px;
+  height: 8px;
+  width: 8px;
+  margin: 2px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.task-bubble.completed-task {
+  background-color: #4CAF50;
+}
+
+.task-count {
+  display: flex;
+  flex-direction: column;
+  font-size: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.completed-count {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.active-count {
+  color: #2196F3;
+  font-weight: bold;
+}
+
+.back-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.back-arrow-img {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-arrow-img:hover {
+  transform: scale(1.05);
+}
+
+.footer-title {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #645270;
+  letter-spacing: 2px;
+  font-family: 'Inika', serif;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .calendar-box {
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  .calendar-cell {
+    height: 45px;
+    font-size: 11px;
+  }
+
+  .completed-tasks-title {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .calendar-header {
+    font-size: 18px;
+    gap: 8px;
+  }
+}
+
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modalTitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: #01578F;
+  font-family: 'Original Surfer', cursive;
+}
+
+.modalText {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #01578F;
+  font-family: 'Original Surfer', cursive;
+}
+
+.okButton {
+  margin-top: 10px;
+  background: #19FEA6;
+  color: #01578F;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Original Surfer', cursive;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.okButton:hover {
+  background: #15e895;
+}

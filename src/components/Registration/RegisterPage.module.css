@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+
+/* Общий контейнер */
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #EBFD83, #5DF649);
+  box-sizing: border-box;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Контентная обёртка */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  padding: 20px 10px;
+}
+
+/* Логотип */
+.logoContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh; 
+}
+.logo {
+  width: 50%; 
+  height: auto;
+  max-width: 200px; 
+}
+
+/* Форма */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputGroup {
+  width: 100%;
+}
+
+/* Поля ввода */
+.input {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Original Surfer', cursive;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #444;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Ошибки */
+.error {
+  color: #ff0000;
+  font-family: 'Original Surfer', cursive;
+  font-size: 14px;
+  margin-top: 8px; 
+  display: block;
+  text-align: center;
+  font-weight: 500; 
+}
+
+/* Кнопка */
+.submitButton {
+  background-color: #E4FD80;
+  color: #01578F;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 16px;
+  font-size: 18px;
+  font-family: 'Original Surfer', cursive;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton:hover {
+  background-color: #206C9D;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Текст ошибки отправки */
+.submitError {
+  color: #ff4757;
+  font-size: 13px;
+  font-family: 'Original Surfer', cursive;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Footer text */
+.footerText {
+  width: 100%;
+  font-family: 'Inika', serif;
+  font-size: 15px;
+  text-align: center;
+  color: #645270;
+  letter-spacing: 2px;
+  padding: 10px 0;
+  position: absolute; 
+  bottom: 30px; 
+  left: 0; 
+}
+/* Модальное окно с аватарами */
+.avatarModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.avatarModal {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  max-width: 260px;
+  width: 90%;
+}
+
+.modalTitle {
+  font-family: 'Original Surfer', cursive;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #01578F;
+  margin-bottom: 16px;
+}
+
+/* Сетка аватаров */
+.avatarGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.avatarImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.avatarImage:hover {
+  transform: scale(1.1);
+  border-color: #206C9D;
+}
+
+.selected {
+  border-color: #206C9D;
+  box-shadow: 0 0 5px #206C9D;
+}
+
+/* Кнопка Cancel */
+.cancelButton {
+  background-color: #b6f4f9;
+  color: #206C9D;
+  font-family: 'Original Surfer', cursive;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background-color: #93e7f0;
+  transform: scale(1.05);
+}
+
+/* Контейнер для превью аватара */
+.avatarPreviewContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+/* Превью аватара */
+.avatarPreview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+

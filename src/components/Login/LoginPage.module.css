@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&family=Inika:wght@400;700&display=swap');
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #B986F8, #E0F63C); 
+    box-sizing: border-box;
+    padding: 20px;
+    overflow-x: hidden; 
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    max-width: 500px;
+    padding: 20px 10px; 
+    box-sizing: border-box;
+    /* margin-top: 2vh;  */
+  }
+
+  .logoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh; 
+  }
+  
+  .logo {
+    width: 50%; 
+    height: auto;
+    max-width: 200px; 
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+    
+  }
+
+.inputGroup {
+  width: 100%;
+}
+
+/* Поля ввода */
+.input {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Original Surfer', cursive;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #444;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+  .input::placeholder {
+    color: #bbb;
+    font-style: italic;
+  }
+
+  .error {
+    color: #ff0000;
+   font-family: 'Original Surfer', cursive;
+    font-size: 14px;
+    margin-top: 8px; 
+    display: block;
+    text-align: center;
+    font-weight: 500; 
+  }
+
+  .forgotPasswordContainer {
+    text-align: right;
+    width: 100%;
+    margin-top: -8px;
+    margin-bottom: 8px;
+  }
+
+  .forgotPassword {
+    color: #000000;
+    font-size: 15px;
+    text-decoration: none;
+    font-family: 'Original Surfer', serif;
+    font-style: italic;
+    transition: color 0.3s ease;
+  }
+
+  .submitButton {
+    background-color: #b59df4;
+    color: #01578F;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 16px; 
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Original Surfer', cursive;
+    margin-top: 16px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    max-width: 320px; 
+    align-self: center; 
+  }
+  
+  .submitButton:hover {
+    background-color: #9573e0;
+    transform: scale(1.03); 
+  }
+  
+  .submitButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .submitError {
+    width: 100%;
+    color: #ff4757;
+    font-family: 'Original Surfer', cursive;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  
+  /* Footer text */
+.footerText {
+  width: 100%;
+  font-family: 'Inika', serif;
+  font-size: 15px;
+  text-align: center;
+  color: #645270;
+  letter-spacing: 2px;
+  padding: 10px 0;
+  position: absolute; 
+  bottom: 30px; 
+  left: 0; 
+}
+
+
+  /* Стилі для кнопки показу пароля */
+  .passwordInputWrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .showPasswordButton {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #777;
+    font-family: 'Original Surfer', serif;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 2;
+  }
+
+  .showPasswordButton:hover {
+    color: #01578F;
+  }
+
+  /* Коригуємо padding для поля пароля */
+  .passwordInputWrapper .input {
+    padding-right: 70px;
+  }

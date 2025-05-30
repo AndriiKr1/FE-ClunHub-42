@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&family=Inika&display=swap');
+
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #9bf0e1, #f8e861);
+  font-family: 'Original Surfer', cursive;
+  position: relative;
+}
+
+.addTaskButton {
+  width: 100%;
+  max-width: 320px;
+  margin: 8px 0;
+  background-color: #8BF3FF;
+  color: #01578F;
+  border: 2px solid #2DACC0;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-family: 'Original Surfer', cursive;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  font-weight: bold;
+  text-align: center;
+}
+
+.addTaskButton:hover {
+  transform: scale(1.05);
+}
+
+.scrollableTaskList {
+  width: 100%;
+  max-width: 320px;
+  height: 188px; 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0;
+  padding: 4px;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #3efcc0 transparent;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.scrollableTaskList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollableTaskList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollableTaskList::-webkit-scrollbar-thumb {
+  background-color: #3efcc0;
+  border-radius: 3px;
+}
+
+.taskRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.taskButton, .taskText {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 15px;
+  background: #3efcc0;
+  border: none;
+  border-radius: 16px;
+  font-size: 15px;
+  cursor: default;
+  letter-spacing: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2),
+              0 4px 8px rgba(255, 255, 255, 0.3);
+  font-family: 'Original Surfer', cursive;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  color: #01578F;
+  font-weight: bold;
+}
+
+.taskIcons {
+  display: flex;
+  height: 44px;
+  margin-left: 5px;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  margin-left: -10px;
+  position: relative;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.icon:first-child {
+  margin-left: 0;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.completedButton {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #8BF3FF;
+  color: #01578F;
+  border: 2px solid #2DACC0;
+  border-radius: 30px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-family: 'Original Surfer', cursive;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.footerText {
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 15px;
+  color: #645270;
+  letter-spacing: 2px;
+  font-family: 'Inika', serif;
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modalContent {
+  max-height: calc(80vh - 100px);
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.modalTitle {
+  font-size: 20px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  color: #01578F;
+  font-family: 'Original Surfer', cursive;
+}
+
+.modalText {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #01578F;
+  font-family: 'Original Surfer', cursive;
+  word-wrap: break-word;
+  white-space: pre-line;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.okButton {
+  margin-top: 10px;
+  background: #19FEA6;
+  color: #01578F;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Original Surfer', cursive;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.okButton:hover {
+  background: #15e895;
+}
+
+.confirmationButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.yesButton {
+  background: #3efcc0 !important;
+  color: #01578f;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: bold;
+} 
+
+.noButton {
+  background: #ff6b6b !important;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.overdueTask {
+  background: #ff9a9a !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2),
+              0 4px 8px rgba(4, 4, 4, 0.3) !important;
+  color: #8b0000 !important;
+}
