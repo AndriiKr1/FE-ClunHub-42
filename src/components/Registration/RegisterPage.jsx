@@ -13,6 +13,9 @@ import avatar4 from "../../assets/avatars/avatar4.png";
 import avatar5 from "../../assets/avatars/avatar5.png";
 import avatar6 from "../../assets/avatars/avatar6.png";
 
+import Family from "../../assets/images/Family.png";
+import User from "../../assets/images/User.png";
+
 const avatarOptions = [
   { id: "avatar1", image: avatar1 },
   { id: "avatar2", image: avatar2 },
@@ -30,13 +33,38 @@ const RegisterPage = () => {
     username: "",
     age: "",
     avatar: "",
+    role: "",
     email: "",
     password: "",
   });
 
+  const userRoles = [
+    "Father",
+    "Mother",
+    "Daughter",
+    "Son",
+    "Grandma",
+    "Grandpa",
+  ];
+
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
+  const [showRoleModal, setShowRoleModal] = useState(false);
+  const [showUserRoles, setShowUserRoles] = useState(false);
+
+  const [showCreateFamilyModal, setShowCreateFamilyModal] = useState(false);
+  const [familyName, setFamilyName] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
+
+  function generateInviteCode(length = 6) {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
+    for (let i = 0; i < length; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +90,27 @@ const RegisterPage = () => {
     if (errors.avatar) {
       setErrors((prev) => ({ ...prev, avatar: "" }));
     }
+  };
+
+  const handleAdminSelect = () => {
+    setFormData((prev) => ({
+      ...prev,
+      role: "admin",
+      userRole: "",
+    }));
+    setShowRoleModal(false);
+    setShowCreateFamilyModal(true); // Відкриваємо модалку створення сім’ї
+  };
+
+  const handleUserRoleSelect = (role) => {
+    setFormData((prev) => ({
+      ...prev,
+      role: "user",
+      userRole: role,
+    }));
+    setShowRoleModal(false);
+    setShowUserRoles(false);
+    if (errors.role) setErrors((prev) => ({ ...prev, role: "" }));
   };
 
   const validateForm = () => {
@@ -115,6 +164,10 @@ const RegisterPage = () => {
         "Password must include uppercase, lowercase, number and special character";
     }
 
+    if (!formData.role) {
+      newErrors.role = "Please select a role";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -134,6 +187,7 @@ const RegisterPage = () => {
           password: formData.password,
           age: formData.age,
           avatar: formData.avatar,
+          role: formData.role,
         })
       ).unwrap();
 
@@ -206,12 +260,6 @@ const RegisterPage = () => {
               id="avatar-selector"
               className={styles.input}
               onClick={() => setShowAvatarModal(true)}
-              style={{
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
             >
               {formData.avatar ? (
                 <>
@@ -234,6 +282,20 @@ const RegisterPage = () => {
             {errors.avatar && (
               <span className={styles.error}>{errors.avatar}</span>
             )}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div
+              className={styles.input}
+              onClick={() => setShowRoleModal(true)}
+            >
+              {formData.role === "admin"
+                ? "Role: Admin"
+                : formData.role === "user" && formData.userRole
+                ? `Role: ${formData.userRole}`
+                : "Choose your role..."}
+            </div>
+            {errors.role && <span className={styles.error}>{errors.role}</span>}
           </div>
 
           <div className={styles.inputGroup}>
@@ -311,6 +373,95 @@ const RegisterPage = () => {
               onClick={() => setShowAvatarModal(false)}
             >
               Cancel
+            </button>
+          </div>
+        </div>
+      )}
+      {/* Show role Modal */}
+      {showRoleModal && (
+        <div className={styles.roleModalOverlay}>
+          <div className={styles.roleModal}>
+            <h3 className={styles.modalTitle}>Choose your role</h3>
+            <button className={styles.adminButton} onClick={handleAdminSelect}>
+              <img src={Family} alt="Admin" className={styles.roleIconAdmin} />
+              Create Family (Admin)
+            </button>
+            <div>
+              <button
+                className={styles.userButton}
+                onClick={() => setShowUserRoles((prev) => !prev)}
+              >
+                <img src={User} alt="User" className={styles.roleIconUser} />
+                Join Family (User)
+                <span>▼</span>
+              </button>
+              {showUserRoles && (
+                <div className={styles.userRolesDropdown}>
+                  {userRoles.map((role) => (
+                    <div
+                      key={role}
+                      className={styles.userRoleOption}
+                      onClick={() => handleUserRoleSelect(role)}
+                    >
+                      {role}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <button
+              id="role-cancel-btn"
+              className={styles.cancelButtonRole}
+              onClick={() => {
+                setShowRoleModal(false);
+                setShowUserRoles(false);
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+      {showCreateFamilyModal && (
+        <div className={styles.roleModalOverlay}>
+          <div className={styles.roleModal}>
+            <h3 className={styles.modalTitle}>Create Family</h3>
+            <input
+              className={styles.familyInput}
+              type="text"
+              placeholder="Create Family Name"
+              value={familyName}
+              onChange={(e) => setFamilyName(e.target.value)}
+            />
+            <button
+              className={styles.inviteButton}
+              onClick={() => setInviteCode(generateInviteCode())}
+            >
+              Create invite code
+            </button>
+            {inviteCode && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  marginBottom: 18,
+                }}
+              >
+                <div className={styles.inviteCode}>{inviteCode}</div>
+                <button
+                  className={styles.copyButton}
+                  onClick={() => navigator.clipboard.writeText(inviteCode)}
+                >
+                  Copy
+                </button>
+              </div>
+            )}
+            <button
+              className={styles.okButton}
+              onClick={() => setShowCreateFamilyModal(false)}
+            >
+              OK
             </button>
           </div>
         </div>

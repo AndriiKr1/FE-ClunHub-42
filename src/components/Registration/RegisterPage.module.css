@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap");
 
 /* Общий контейнер */
 .registerContainer {
@@ -8,7 +8,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #EBFD83, #5DF649);
+  background: linear-gradient(to bottom, #ebfd83, #5df649);
   box-sizing: border-box;
   padding: 20px;
   overflow-x: hidden;
@@ -29,12 +29,12 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 5vh; 
+  margin-bottom: 5vh;
 }
 .logo {
-  width: 50%; 
+  width: 50%;
   height: auto;
-  max-width: 200px; 
+  max-width: 200px;
 }
 
 /* Форма */
@@ -55,7 +55,7 @@
   padding: 10px 16px;
   border-radius: 30px;
   border: none;
-  font-family: 'Original Surfer', cursive;
+  font-family: "Original Surfer", cursive;
   font-size: 16px;
   letter-spacing: 1px;
   color: #444;
@@ -72,23 +72,23 @@
 /* Ошибки */
 .error {
   color: #ff0000;
-  font-family: 'Original Surfer', cursive;
+  font-family: "Original Surfer", cursive;
   font-size: 14px;
-  margin-top: 8px; 
+  margin-top: 8px;
   display: block;
   text-align: center;
-  font-weight: 500; 
+  font-weight: 500;
 }
 
 /* Кнопка */
 .submitButton {
-  background-color: #E4FD80;
-  color: #01578F;
+  background-color: #e4fd80;
+  color: #01578f;
   border: none;
   border-radius: 30px;
   padding: 10px 16px;
   font-size: 18px;
-  font-family: 'Original Surfer', cursive;
+  font-family: "Original Surfer", cursive;
   letter-spacing: 2px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -96,7 +96,7 @@
 }
 
 .submitButton:hover {
-  background-color: #206C9D;
+  background-color: #206c9d;
   color: #fff;
   transform: scale(1.03);
 }
@@ -112,7 +112,7 @@
 .submitError {
   color: #ff4757;
   font-size: 13px;
-  font-family: 'Original Surfer', cursive;
+  font-family: "Original Surfer", cursive;
   text-align: center;
   margin-top: 10px;
 }
@@ -120,15 +120,15 @@
 /* Footer text */
 .footerText {
   width: 100%;
-  font-family: 'Inika', serif;
+  font-family: "Inika", serif;
   font-size: 15px;
   text-align: center;
   color: #645270;
   letter-spacing: 2px;
   padding: 10px 0;
-  position: absolute; 
-  bottom: 30px; 
-  left: 0; 
+  position: absolute;
+  bottom: 30px;
+  left: 0;
 }
 /* Модальное окно с аватарами */
 .avatarModalOverlay {
@@ -155,11 +155,11 @@
 }
 
 .modalTitle {
-  font-family: 'Original Surfer', cursive;
+  font-family: "Original Surfer", cursive;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 2px;
-  color: #01578F;
+  color: #01578f;
   margin-bottom: 16px;
 }
 
@@ -184,19 +184,19 @@
 
 .avatarImage:hover {
   transform: scale(1.1);
-  border-color: #206C9D;
+  border-color: #206c9d;
 }
 
 .selected {
-  border-color: #206C9D;
-  box-shadow: 0 0 5px #206C9D;
+  border-color: #206c9d;
+  box-shadow: 0 0 5px #206c9d;
 }
 
 /* Кнопка Cancel */
 .cancelButton {
   background-color: #b6f4f9;
-  color: #206C9D;
-  font-family: 'Original Surfer', cursive;
+  color: #206c9d;
+  font-family: "Original Surfer", cursive;
   font-size: 16px;
   padding: 10px 20px;
   border-radius: 30px;
@@ -229,3 +229,233 @@
   object-fit: contain;
 }
 
+/* --- Модальне вікно ролі --- */
+.roleModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.roleModal {
+  background: #fff;
+  border-radius: 28px;
+   padding: 32px 18px 24px 18px;
+  max-width: 350px;
+  width: 90vw;
+  box-shadow: 0 8px 32px rgba(32, 108, 157, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.roleModal .modalTitle {
+  font-family: "Original Surfer", cursive;
+  font-size: 28px;
+  color: #01578f;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.adminButton {
+  width: 100%;
+  background: #9c3ffa;
+  color: #fff;
+  font-family: "Original Surfer", cursive;
+  font-size: 18px;
+  border: none;
+  border-radius: 18px;
+  padding: 0 ;
+  margin-bottom: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(167, 123, 254, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s, transform 0.2s;
+}
+.adminButton:hover {
+  background: #8d5be7;
+  transform: scale(1.03);
+}
+
+.userButton {
+  width: 100%;
+  background: #fff;
+  color: #206c9d;
+  font-family: "Original Surfer", cursive;
+  font-size: 18px;
+  border: 2px solid #a77bfe;
+  border-radius: 18px;
+  padding: 0 36px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(167, 123, 254, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  position: relative;
+}
+.userButton:hover {
+  background: #f3eaff;
+  color: #8d5be7;
+  transform: scale(1.03);
+}
+.userButton span {
+   font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.userRolesDropdown {
+  position: absolute;
+  right: 10px;
+  background: #bb8af0;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(167, 123, 254, 0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+.userRoleOption {
+  color: #fff;
+  font-family: "Original Surfer", cursive;
+  font-size: 18px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  text-align: left;
+}
+.userRoleOption:hover {
+  background: #fff;
+  color: #a77bfe;
+}
+
+.cancelButtonRole {
+  background-color: #ff4f9b;
+  color: #206c9d;
+  font-family: "Original Surfer", cursive;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 20px;
+  letter-spacing: 3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.cancelButtonRole:hover {
+  background-color: #ff4f9b;
+  transform: scale(1.05);
+}
+
+/* Для іконок */
+.roleIconAdmin {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  display: inline-block;
+  object-fit: contain;
+  /* filter: brightness(0) invert(1); */
+}
+
+.roleIconUser {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  display: inline-block;
+  object-fit: contain;
+}
+
+
+.familyInput {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 30px;
+  border: none;
+  font-family: "Original Surfer", cursive;
+  font-size: 20px;
+  color: #01578f;
+  background: #f8fff0;
+  margin-bottom: 18px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(32, 108, 157, 0.08);
+}
+
+.inviteButton {
+  width: 100%;
+  background: #8cfd83;
+  color: #01578f;
+  font-family: "Original Surfer", cursive;
+  font-size: 22px;
+  border: none;
+  border-radius: 22px;
+  padding: 14px 0;
+  margin-bottom: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(140, 253, 131, 0.18);
+  transition: background 0.2s, transform 0.2s;
+}
+.inviteButton:hover {
+  background: #5df649;
+  transform: scale(1.03);
+}
+
+.inviteCode {
+  background: #fff;
+  color: #01578f;
+  font-family: "Original Surfer", cursive;
+  font-size: 26px;
+  border-radius: 22px;
+  padding: 10px 28px;
+  border: 2px solid #8cfd83;
+  margin-right: 8px;
+  text-align: center;
+}
+
+.copyButton {
+  background: #ffe97a;
+  color: #206c9d;
+  font-family: "Original Surfer", cursive;
+  font-size: 20px;
+  border: none;
+  border-radius: 18px;
+  padding: 10px 22px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 233, 122, 0.18);
+  transition: background 0.2s, transform 0.2s;
+}
+.copyButton:hover {
+  background: #fff7c2;
+  transform: scale(1.05);
+}
+
+.okButton {
+  width: 100%;
+  background: #e4fd80;
+  color: #01578f;
+  font-family: "Original Surfer", cursive;
+  font-size: 28px;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(228, 253, 128, 0.18);
+  transition: background 0.2s, transform 0.2s;
+}
+.okButton:hover {
+  background: #b6f97a;
+  transform: scale(1.05);
+}
