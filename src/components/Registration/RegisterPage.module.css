@@ -311,18 +311,14 @@
 
 .userRolesDropdown {
   position: absolute;
-  top: 100%;
-  /* Розташовується одразу під кнопкою */
-  left: 0;
-  right: 0;
-  /* Розтягується на всю ширину кнопки */
+  top: 75%;
+  left: 210px;
   background: #bb8af0;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(167, 123, 254, 0.18);
   display: flex;
   flex-direction: column;
   z-index: 10;
-  /* Щоб був поверх інших елементів */
   margin-top: 4px;
 }
 
@@ -330,7 +326,7 @@
   color: #fff;
   font-family: "Original Surfer", cursive;
   font-size: 16px;
-  padding: 12px 20px;
+  padding: 6px 18px;
   cursor: pointer;
   transition: background 0.18s, color 0.18s;
   text-align: left;
