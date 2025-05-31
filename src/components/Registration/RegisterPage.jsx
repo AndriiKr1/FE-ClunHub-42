@@ -290,9 +290,9 @@ const RegisterPage = () => {
               onClick={() => setShowRoleModal(true)}
             >
               {formData.role === "admin"
-                ? "Role: Admin"
+                ? "Admin"
                 : formData.role === "user" && formData.userRole
-                ? `Role: ${formData.userRole}`
+                ? `${formData.userRole}`
                 : "Choose your role..."}
             </div>
             {errors.role && <span className={styles.error}>{errors.role}</span>}

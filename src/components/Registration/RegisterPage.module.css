@@ -230,6 +230,7 @@
 }
 
 /* --- Модальне вікно ролі --- */
+/* Overlay */
 .roleModalOverlay {
   position: fixed;
   top: 0;
@@ -243,19 +244,21 @@
   z-index: 1000;
 }
 
+/* Modal container */
 .roleModal {
   background: #fff;
   border-radius: 28px;
-   padding: 32px 18px 24px 18px;
+  padding: 32px 24px 24px 24px;
   max-width: 350px;
   width: 90vw;
   box-shadow: 0 8px 32px rgba(32, 108, 157, 0.18);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* Важливо! */
   position: relative;
 }
 
+/* Title */
 .roleModal .modalTitle {
   font-family: "Original Surfer", cursive;
   font-size: 28px;
@@ -265,58 +268,84 @@
   letter-spacing: 1px;
 }
 
-.adminButton {
-  width: 100%;
-  background: #9c3ffa;
-  color: #fff;
-  font-family: "Original Surfer", cursive;
-  font-size: 18px;
-  border: none;
-  border-radius: 18px;
-  padding: 0 ;
-  margin-bottom: 16px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(167, 123, 254, 0.18);
+/* RESET для кнопок - видаляємо всі можливі стилі */
+.adminButton,
+.userButton {
+  /* Reset */
+  all: unset;
+  
+  /* Основні стилі */
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  
+  /* Позиціонування */
+  margin: 0 0 16px 0;
+  padding: 0 20px;
+  
+  /* Шрифт */
+  font-family: "Original Surfer", cursive;
+  font-size: 18px;
+  
+  /* Форма */
+  border-radius: 18px;
+  
+  /* Курсор */
+  cursor: pointer;
+  
+  /* Анімація */
+  transition: all 0.2s ease;
+  
+  /* Іконки */
   gap: 10px;
-  transition: background 0.2s, transform 0.2s;
 }
+
+/* Admin Button */
+.adminButton {
+  background: #9c3ffa;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(167, 123, 254, 0.18);
+}
+
 .adminButton:hover {
   background: #8d5be7;
   transform: scale(1.03);
 }
 
+/* User Button */
 .userButton {
-  width: 100%;
   background: #fff;
   color: #206c9d;
-  font-family: "Original Surfer", cursive;
-  font-size: 18px;
   border: 2px solid #a77bfe;
-  border-radius: 18px;
-  padding: 0 36px;
-  cursor: pointer;
-  margin-bottom: 16px;
   box-shadow: 0 4px 12px rgba(167, 123, 254, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
   position: relative;
 }
+
 .userButton:hover {
   background: #f3eaff;
   color: #8d5be7;
   transform: scale(1.03);
 }
-.userButton span {
-   font-size: 12px;
+
+/* Wrapper для user button з dropdown */
+.userButtonWrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Стрілка dropdown */
+.dropdownArrow {
+  font-size: 12px;
+  margin-left: auto;
   transition: transform 0.2s ease;
 }
 
+/* Dropdown */
 .userRolesDropdown {
   position: absolute;
   right: 10px;
@@ -330,111 +359,122 @@
 .userRoleOption {
   color: #fff;
   font-family: "Original Surfer", cursive;
-  font-size: 18px;
-  padding: 8px 16px;
+  font-size: 16px;
+  padding: 12px 20px;
   cursor: pointer;
   transition: background 0.18s, color 0.18s;
   text-align: left;
 }
+
 .userRoleOption:hover {
   background: #fff;
   color: #a77bfe;
 }
 
+/* Іконки */
+.roleIconAdmin,
+.roleIconUser {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Cancel button */
 .cancelButtonRole {
-  background-color: #ff4f9b;
-  color: #206c9d;
+  background-color: #ff6b6b;
+  color: #fff;
   font-family: "Original Surfer", cursive;
   font-size: 16px;
   padding: 12px 24px;
   border-radius: 20px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 8px;
+  align-self: center;
 }
 
 .cancelButtonRole:hover {
-  background-color: #ff4f9b;
+  background-color: #ff5252;
   transform: scale(1.05);
 }
 
-/* Для іконок */
-.roleIconAdmin {
-  width: 60px;
-  height: 60px;
-  vertical-align: middle;
-  display: inline-block;
-  object-fit: contain;
-  /* filter: brightness(0) invert(1); */
-}
-
-.roleIconUser {
-  width: 60px;
-  height: 60px;
-  vertical-align: middle;
-  display: inline-block;
-  object-fit: contain;
-}
-
-
 .familyInput {
-  width: 100%;
+  width: 100%; /* Трохи менша ширина */
   padding: 14px 18px;
   border-radius: 30px;
-  border: none;
+  border: 2px solid #4ade80;
   font-family: "Original Surfer", cursive;
-  font-size: 20px;
-  color: #01578f;
-  background: #f8fff0;
+  font-size: 16px;
+  color: #333;
+  background: #fff;
   margin-bottom: 18px;
-  text-align: center;
+  text-align: center; 
   box-shadow: 0 2px 8px rgba(32, 108, 157, 0.08);
+  outline: none;
 }
 
 .inviteButton {
-  width: 100%;
+  width: 80%; 
   background: #8cfd83;
   color: #01578f;
   font-family: "Original Surfer", cursive;
-  font-size: 22px;
+  font-size: 18px;
   border: none;
   border-radius: 22px;
   padding: 14px 0;
-  margin-bottom: 12px;
+  margin: 0 auto 12px auto; /* Центрування */
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(140, 253, 131, 0.18);
   transition: background 0.2s, transform 0.2s;
+  display: block; /* Для роботи margin auto */
 }
+
 .inviteButton:hover {
   background: #5df649;
   transform: scale(1.03);
 }
 
 .inviteCode {
+  width: 160px; /* Фіксована ширина */
+  height: 40px; /* Фіксована висота */
   background: #fff;
   color: #01578f;
   font-family: "Original Surfer", cursive;
-  font-size: 26px;
-  border-radius: 22px;
-  padding: 10px 28px;
+  font-size: 18px;
+  border-radius: 25px;
+  padding: 0; /* Видалив padding щоб не конфліктувало з width */
   border: 2px solid #8cfd83;
   margin-right: 8px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Змінив на center */
+  box-sizing: border-box; /* Важливо! */
+  flex-shrink: 0; /* Не дозволяємо стискатися */
 }
 
 .copyButton {
+  width: 90px; /* Фіксована ширина */
+  height: 40px; /* Фіксована висота */
   background: #ffe97a;
   color: #206c9d;
   font-family: "Original Surfer", cursive;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
-  border-radius: 18px;
-  padding: 10px 22px;
+  border-radius: 25px;
+  padding: 0; /* Видалив padding */
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(255, 233, 122, 0.18);
   transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0; 
+  margin-left: auto;
 }
 .copyButton:hover {
   background: #fff7c2;
@@ -442,19 +482,21 @@
 }
 
 .okButton {
-  width: 100%;
+  width: 40%; 
   background: #e4fd80;
   color: #01578f;
   font-family: "Original Surfer", cursive;
-  font-size: 28px;
+  font-size: 18px;
   border: none;
-  border-radius: 30px;
-  padding: 12px 0;
-  margin-top: 10px;
+  border-radius: 25px;
+  padding: 10px 0;
+  margin: 10px auto 0 auto; 
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(228, 253, 128, 0.18);
   transition: background 0.2s, transform 0.2s;
+  display: block; 
 }
+
 .okButton:hover {
   background: #b6f97a;
   transform: scale(1.05);
