@@ -30,6 +30,7 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
+    inviteCode: "",
     username: "",
     age: "",
     avatar: "",
@@ -99,7 +100,7 @@ const RegisterPage = () => {
       userRole: "",
     }));
     setShowRoleModal(false);
-    setShowCreateFamilyModal(true); // Відкриваємо модалку створення сім’ї
+    setShowCreateFamilyModal(true);
   };
 
   const handleUserRoleSelect = (role) => {
@@ -224,6 +225,22 @@ const RegisterPage = () => {
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          <div className={styles.inputGroup}>
+            <input
+              id="invite-code-input"
+              type="text"
+              name="inviteCode"
+              value={formData.inviteCode}
+              onChange={handleChange}
+              placeholder="invite code"
+              className={styles.input}
+              disabled={isLoading}
+            />
+            {errors.inviteCode && (
+              <span className={styles.error}>{errors.inviteCode}</span>
+            )}
+          </div>
+
           <div className={styles.inputGroup}>
             <input
               id="username-input"
