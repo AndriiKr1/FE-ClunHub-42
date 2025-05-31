@@ -5,7 +5,6 @@ import { registerUser } from "../../store/slices/authSlice";
 import styles from "./RegisterPage.module.css";
 import clanHubLogo from "../../assets/images/Logo2.png";
 
-// Импорт аватаров
 import avatar1 from "../../assets/avatars/avatar1.png";
 import avatar2 from "../../assets/avatars/avatar2.png";
 import avatar3 from "../../assets/avatars/avatar3.png";
@@ -69,9 +68,16 @@ const RegisterPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    let processedValue = value;
+
+    if (name === "inviteCode") {
+      processedValue = value.toUpperCase();
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: processedValue,
     }));
 
     if (errors[name]) {
@@ -116,6 +122,31 @@ const RegisterPage = () => {
 
   const validateForm = () => {
     const newErrors = {};
+
+    if (
+      formData.role === "user" &&
+      formData.inviteCode &&
+      formData.inviteCode.trim()
+    ) {
+      if (formData.inviteCode.trim().length < 4) {
+        newErrors.inviteCode = "Invite code must be at least 4 characters";
+      } else if (formData.inviteCode.trim().length > 10) {
+        newErrors.inviteCode = "Invite code cannot exceed 10 characters";
+      } else if (!/^[A-Z0-9]+$/.test(formData.inviteCode.trim())) {
+        newErrors.inviteCode =
+          "Invite code can only contain uppercase letters and numbers";
+      }
+    }
+
+    if (formData.role === "admin" && (!familyName || !familyName.trim())) {
+      newErrors.familyName = "Family name is required for admin";
+    } else if (
+      formData.role === "admin" &&
+      familyName &&
+      familyName.trim().length > 30
+    ) {
+      newErrors.familyName = "Family name cannot exceed 30 characters";
+    }
 
     if (!formData.username.trim()) {
       newErrors.username = "Username is required";
@@ -181,17 +212,29 @@ const RegisterPage = () => {
     setErrors({});
 
     try {
-      await dispatch(
-        registerUser({
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-          age: formData.age,
-          avatar: formData.avatar,
-          role: formData.role,
-        })
-      ).unwrap();
+      let registrationData = {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        age: formData.age,
+        avatar: formData.avatar,
+        role: formData.role,
+      };
 
+      if (formData.role === "admin") {
+        registrationData = {
+          ...registrationData,
+          familyName: familyName,
+          generateInviteCode: true,
+        };
+      } else if (formData.role === "user" && formData.inviteCode.trim()) {
+        registrationData = {
+          ...registrationData,
+          inviteCode: formData.inviteCode.trim(),
+        };
+      }
+
+      await dispatch(registerUser(registrationData)).unwrap();
       navigate("/dashboard");
     } catch (error) {
       console.error("Registration error:", error);
@@ -199,6 +242,27 @@ const RegisterPage = () => {
       if (typeof error === "string" && error.includes("already exists")) {
         setErrors({
           submit: "User with this email already exists",
+        });
+      } else if (
+        typeof error === "string" &&
+        error.includes("Invalid invite code")
+      ) {
+        setErrors({
+          submit: "Invalid invite code. Please check and try again.",
+        });
+      } else if (
+        typeof error === "string" &&
+        error.includes("Invite code expired")
+      ) {
+        setErrors({
+          submit: "Invite code has expired. Please request a new one.",
+        });
+      } else if (
+        typeof error === "string" &&
+        error.includes("Family name required")
+      ) {
+        setErrors({
+          submit: "Family name is required for admin registration.",
         });
       } else if (
         typeof error === "string" &&
@@ -225,21 +289,25 @@ const RegisterPage = () => {
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          <div className={styles.inputGroup}>
-            <input
-              id="invite-code-input"
-              type="text"
-              name="inviteCode"
-              value={formData.inviteCode}
-              onChange={handleChange}
-              placeholder="invite code"
-              className={styles.input}
-              disabled={isLoading}
-            />
-            {errors.inviteCode && (
-              <span className={styles.error}>{errors.inviteCode}</span>
-            )}
-          </div>
+          {formData.role === "user" && (
+            <div className={styles.inputGroup}>
+              <input
+                id="invite-code-input"
+                type="text"
+                name="inviteCode"
+                value={formData.inviteCode}
+                onChange={handleChange}
+                placeholder="invite code"
+                className={styles.input}
+                disabled={isLoading}
+                maxLength={10}
+                style={{ textTransform: "uppercase" }}
+              />
+              {errors.inviteCode && (
+                <span className={styles.error}>{errors.inviteCode}</span>
+              )}
+            </div>
+          )}
 
           <div className={styles.inputGroup}>
             <input
@@ -279,7 +347,7 @@ const RegisterPage = () => {
               onClick={() => setShowAvatarModal(true)}
             >
               {formData.avatar ? (
-                <>
+                <div className={styles.avatarDisplayWrapper}>
                   <span>Avatar selected</span>
                   <div className={styles.avatarPreviewContainer}>
                     <img
@@ -291,7 +359,7 @@ const RegisterPage = () => {
                       className={styles.avatarPreview}
                     />
                   </div>
-                </>
+                </div>
               ) : (
                 "Choose your avatar..."
               )}
@@ -366,7 +434,6 @@ const RegisterPage = () => {
         </div>
       </div>
 
-      {/* Avatar modal */}
       {showAvatarModal && (
         <div className={styles.avatarModalOverlay}>
           <div className={styles.avatarModal}>
@@ -394,7 +461,7 @@ const RegisterPage = () => {
           </div>
         </div>
       )}
-      {/* Show role Modal */}
+
       {showRoleModal && (
         <div className={styles.roleModalOverlay}>
           <div className={styles.roleModal}>
@@ -403,7 +470,8 @@ const RegisterPage = () => {
               <img src={Family} alt="Admin" className={styles.roleIconAdmin} />
               Create Family (Admin)
             </button>
-            <div>
+
+            <div style={{ position: "relative", width: "100%" }}>
               <button
                 className={styles.userButton}
                 onClick={() => setShowUserRoles((prev) => !prev)}
@@ -439,17 +507,29 @@ const RegisterPage = () => {
           </div>
         </div>
       )}
+
       {showCreateFamilyModal && (
         <div className={styles.roleModalOverlay}>
           <div className={styles.roleModal}>
             <h3 className={styles.modalTitle}>Create Family</h3>
             <input
-              className={styles.familyInput}
+              className={`${styles.familyInput} ${
+                errors.familyName ? styles.error : ""
+              }`}
               type="text"
               placeholder="Create Family Name"
               value={familyName}
-              onChange={(e) => setFamilyName(e.target.value)}
+              onChange={(e) => {
+                setFamilyName(e.target.value);
+                if (errors.familyName) {
+                  setErrors((prev) => ({ ...prev, familyName: "" }));
+                }
+              }}
+              maxLength={30}
             />
+            {errors.familyName && (
+              <span className={styles.error}>{errors.familyName}</span>
+            )}
             <button
               className={styles.inviteButton}
               onClick={() => setInviteCode(generateInviteCode())}
@@ -457,14 +537,7 @@ const RegisterPage = () => {
               Create invite code
             </button>
             {inviteCode && (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  marginBottom: 18,
-                }}
-              >
+              <div className={styles.inviteCodeGroup}>
                 <div className={styles.inviteCode}>{inviteCode}</div>
                 <button
                   className={styles.copyButton}

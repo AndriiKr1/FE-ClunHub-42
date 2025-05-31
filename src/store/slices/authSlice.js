@@ -13,15 +13,12 @@ export const registerUser = createAsyncThunk(
         password: userData.password,
         age: parseInt(userData.age),
         avatarId: userData.avatar,
+        inviteCode: userData.inviteCode || null, // Додаємо invite code
       };
-      
-     
       
       const response = await axios.post(`/api/auth/sign-up`, requestData);
       return response.data;
     } catch (error) {
-      
-      
       // Handle specific error types
       if (error.response) {
         // Server responded with a non-2xx status
@@ -39,6 +36,15 @@ export const registerUser = createAsyncThunk(
               .join(', ');
             return rejectWithValue(`Validation failed: ${errorMessages}`);
           }
+          // Specific invite code errors
+          if (error.response.data && error.response.data.message) {
+            if (error.response.data.message.includes("Invalid invite code")) {
+              return rejectWithValue("Invalid invite code. Please check and try again.");
+            }
+            if (error.response.data.message.includes("Invite code expired")) {
+              return rejectWithValue("Invite code has expired. Please request a new one.");
+            }
+          }
           return rejectWithValue(error.response.data?.message || "Invalid registration data");
         }
         else {
@@ -51,6 +57,7 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
 export const loginUser = createAsyncThunk(
   "auth/signin",
   async (userData, { rejectWithValue }) => {

@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap");
 
-/* Общий контейнер */
 .registerContainer {
   display: flex;
   flex-direction: column;
@@ -14,7 +13,6 @@
   overflow-x: hidden;
 }
 
-/* Контентная обёртка */
 .content {
   display: flex;
   flex-direction: column;
@@ -24,20 +22,19 @@
   padding: 20px 10px;
 }
 
-/* Логотип */
 .logoContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 5vh;
 }
+
 .logo {
   width: 50%;
   height: auto;
   max-width: 200px;
 }
 
-/* Форма */
 .form {
   width: 100%;
   display: flex;
@@ -49,7 +46,6 @@
   width: 100%;
 }
 
-/* Поля ввода */
 .input {
   width: 100%;
   padding: 10px 16px;
@@ -69,7 +65,6 @@
   font-style: italic;
 }
 
-/* Ошибки */
 .error {
   color: #ff0000;
   font-family: "Original Surfer", cursive;
@@ -80,7 +75,6 @@
   font-weight: 500;
 }
 
-/* Кнопка */
 .submitButton {
   background-color: #e4fd80;
   color: #01578f;
@@ -108,7 +102,6 @@
   transform: none;
 }
 
-/* Текст ошибки отправки */
 .submitError {
   color: #ff4757;
   font-size: 13px;
@@ -117,7 +110,6 @@
   margin-top: 10px;
 }
 
-/* Footer text */
 .footerText {
   width: 100%;
   font-family: "Inika", serif;
@@ -130,7 +122,7 @@
   bottom: 30px;
   left: 0;
 }
-/* Модальное окно с аватарами */
+
 .avatarModalOverlay {
   position: fixed;
   top: 0;
@@ -163,7 +155,6 @@
   margin-bottom: 16px;
 }
 
-/* Сетка аватаров */
 .avatarGrid {
   display: flex;
   flex-wrap: wrap;
@@ -192,7 +183,6 @@
   box-shadow: 0 0 5px #206c9d;
 }
 
-/* Кнопка Cancel */
 .cancelButton {
   background-color: #b6f4f9;
   color: #206c9d;
@@ -210,7 +200,13 @@
   transform: scale(1.05);
 }
 
-/* Контейнер для превью аватара */
+.avatarDisplayWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .avatarPreviewContainer {
   width: 40px;
   height: 40px;
@@ -222,15 +218,12 @@
   background-color: #f0f0f0;
 }
 
-/* Превью аватара */
 .avatarPreview {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
-/* --- Модальне вікно ролі --- */
-/* Overlay */
 .roleModalOverlay {
   position: fixed;
   top: 0;
@@ -244,7 +237,6 @@
   z-index: 1000;
 }
 
-/* Modal container */
 .roleModal {
   background: #fff;
   border-radius: 28px;
@@ -254,11 +246,10 @@
   box-shadow: 0 8px 32px rgba(32, 108, 157, 0.18);
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Важливо! */
+  align-items: stretch;
   position: relative;
 }
 
-/* Title */
 .roleModal .modalTitle {
   font-family: "Original Surfer", cursive;
   font-size: 28px;
@@ -268,42 +259,25 @@
   letter-spacing: 1px;
 }
 
-
 .adminButton,
 .userButton {
-  
   all: unset;
-  
-  /* Основні стилі */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 60px;
   box-sizing: border-box;
-  
-  /* Позиціонування */
   margin: 0 0 16px 0;
   padding: 0 20px;
-  
-  /* Шрифт */
   font-family: "Original Surfer", cursive;
   font-size: 18px;
-  
-  /* Форма */
   border-radius: 18px;
-  
-  /* Курсор */
   cursor: pointer;
-  
-  /* Анімація */
   transition: all 0.2s ease;
-  
-  /* Іконки */
   gap: 10px;
 }
 
-/* Admin Button */
 .adminButton {
   background: #9c3ffa;
   color: #fff;
@@ -316,13 +290,11 @@
   transform: scale(1.03);
 }
 
-/* User Button */
 .userButton {
   background: #fff;
   color: #206c9d;
   border: 2px solid #a77bfe;
   box-shadow: 0 4px 12px rgba(167, 123, 254, 0.1);
-  position: relative;
 }
 
 .userButton:hover {
@@ -331,29 +303,27 @@
   transform: scale(1.03);
 }
 
-/* Wrapper для user button з dropdown */
-.userButtonWrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 16px;
-}
-
-/* Стрілка dropdown */
 .dropdownArrow {
   font-size: 12px;
   margin-left: auto;
   transition: transform 0.2s ease;
 }
 
-/* Dropdown */
 .userRolesDropdown {
   position: absolute;
-  right: 10px;
+  top: 100%;
+  /* Розташовується одразу під кнопкою */
+  left: 0;
+  right: 0;
+  /* Розтягується на всю ширину кнопки */
   background: #bb8af0;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(167, 123, 254, 0.18);
   display: flex;
   flex-direction: column;
+  z-index: 10;
+  /* Щоб був поверх інших елементів */
+  margin-top: 4px;
 }
 
 .userRoleOption {
@@ -371,7 +341,6 @@
   color: #a77bfe;
 }
 
-
 .roleIconAdmin,
 .roleIconUser {
   width: 60px;
@@ -380,7 +349,6 @@
   flex-shrink: 0;
 }
 
-/* Cancel button */
 .cancelButtonRole {
   background-color: #ff6b6b;
   color: #fff;
@@ -402,7 +370,7 @@
 }
 
 .familyInput {
-  width: 100%; 
+  width: 100%;
   padding: 14px 18px;
   border-radius: 30px;
   border: 2px solid #4ade80;
@@ -411,13 +379,13 @@
   color: #333;
   background: #fff;
   margin-bottom: 18px;
-  text-align: center; 
+  text-align: center;
   box-shadow: 0 2px 8px rgba(32, 108, 157, 0.08);
   outline: none;
 }
 
 .inviteButton {
-  width: 80%; 
+  width: 80%;
   background: #8cfd83;
   color: #01578f;
   font-family: "Original Surfer", cursive;
@@ -425,11 +393,11 @@
   border: none;
   border-radius: 22px;
   padding: 14px 0;
-  margin: 0 auto 12px auto; 
+  margin: 0 auto 12px auto;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(140, 253, 131, 0.18);
   transition: background 0.2s, transform 0.2s;
-  display: block; 
+  display: block;
 }
 
 .inviteButton:hover {
@@ -437,27 +405,34 @@
   transform: scale(1.03);
 }
 
+.inviteCodeGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
 .inviteCode {
-  width: 160px; 
-  height: 40px; 
+  width: 160px;
+  height: 40px;
   background: #fff;
   color: #01578f;
   font-family: "Original Surfer", cursive;
   font-size: 18px;
   border-radius: 25px;
-  padding: 0; 
+  padding: 0;
   border: 2px solid #8cfd83;
-  margin-right: 8px;
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center; 
-  box-sizing: border-box; 
-  flex-shrink: 0; 
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .copyButton {
-  width: 90px; 
+  width: 90px;
   height: 40px;
   background: #ffe97a;
   color: #206c9d;
@@ -465,7 +440,7 @@
   font-size: 18px;
   border: none;
   border-radius: 25px;
-  padding: 0; 
+  padding: 0;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(255, 233, 122, 0.18);
   transition: background 0.2s, transform 0.2s;
@@ -473,17 +448,16 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  flex-shrink: 0; 
-  margin-left: auto;
-  
+  flex-shrink: 0;
 }
+
 .copyButton:hover {
   background: #fff7c2;
   transform: scale(1.05);
 }
 
 .okButton {
-  width: 40%; 
+  width: 40%;
   background: #e4fd80;
   color: #01578f;
   font-family: "Original Surfer", cursive;
@@ -491,11 +465,11 @@
   border: none;
   border-radius: 25px;
   padding: 10px 0;
-  margin: 10px auto 0 auto; 
+  margin: 10px auto 0 auto;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(228, 253, 128, 0.18);
   transition: background 0.2s, transform 0.2s;
-  display: block; 
+  display: block;
 }
 
 .okButton:hover {
