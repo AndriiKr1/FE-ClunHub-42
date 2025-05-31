@@ -268,10 +268,10 @@
   letter-spacing: 1px;
 }
 
-/* RESET для кнопок - видаляємо всі можливі стилі */
+
 .adminButton,
 .userButton {
-  /* Reset */
+  
   all: unset;
   
   /* Основні стилі */
@@ -371,7 +371,7 @@
   color: #a77bfe;
 }
 
-/* Іконки */
+
 .roleIconAdmin,
 .roleIconUser {
   width: 60px;
@@ -402,7 +402,7 @@
 }
 
 .familyInput {
-  width: 100%; /* Трохи менша ширина */
+  width: 100%; 
   padding: 14px 18px;
   border-radius: 30px;
   border: 2px solid #4ade80;
@@ -425,11 +425,11 @@
   border: none;
   border-radius: 22px;
   padding: 14px 0;
-  margin: 0 auto 12px auto; /* Центрування */
+  margin: 0 auto 12px auto; 
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(140, 253, 131, 0.18);
   transition: background 0.2s, transform 0.2s;
-  display: block; /* Для роботи margin auto */
+  display: block; 
 }
 
 .inviteButton:hover {
@@ -438,34 +438,34 @@
 }
 
 .inviteCode {
-  width: 160px; /* Фіксована ширина */
-  height: 40px; /* Фіксована висота */
+  width: 160px; 
+  height: 40px; 
   background: #fff;
   color: #01578f;
   font-family: "Original Surfer", cursive;
   font-size: 18px;
   border-radius: 25px;
-  padding: 0; /* Видалив padding щоб не конфліктувало з width */
+  padding: 0; 
   border: 2px solid #8cfd83;
   margin-right: 8px;
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center; /* Змінив на center */
-  box-sizing: border-box; /* Важливо! */
-  flex-shrink: 0; /* Не дозволяємо стискатися */
+  justify-content: center; 
+  box-sizing: border-box; 
+  flex-shrink: 0; 
 }
 
 .copyButton {
-  width: 90px; /* Фіксована ширина */
-  height: 40px; /* Фіксована висота */
+  width: 90px; 
+  height: 40px;
   background: #ffe97a;
   color: #206c9d;
   font-family: "Original Surfer", cursive;
   font-size: 18px;
   border: none;
   border-radius: 25px;
-  padding: 0; /* Видалив padding */
+  padding: 0; 
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(255, 233, 122, 0.18);
   transition: background 0.2s, transform 0.2s;
@@ -475,6 +475,7 @@
   box-sizing: border-box;
   flex-shrink: 0; 
   margin-left: auto;
+  
 }
 .copyButton:hover {
   background: #fff7c2;
